@@ -64,10 +64,16 @@ function draw(){
     criarNuvens();
     criarObstaculo();
 
-  }
+    if(obstaculo_grupo.isTouching(trex)){
+      estadoDeJogo = FIM;
+    }
+
+  }  
   else if( estadoDeJogo === FIM){
     chao.velocityX = 0;
 
+    obstaculo_grupo.setVolocityEach(0);
+    nuvem_grupo.setVolocityEach(0);
   }
   
   trex.collide(chao_invisivel);
@@ -86,6 +92,8 @@ function criarNuvens(){
 
     nuvem.depth = trex.depth;
     trex.depth = trex.depth + 1;
+
+    nuvem_grupo.add(nuvem);
   }
 }
 
@@ -113,6 +121,8 @@ function criarObstaculo(){
 
     obstaculo.scale = 0.5;
     obstaculo.lifetime = 170;
+
+    obstaculo_grupo.add(obstaculo);
 
   }
 }
