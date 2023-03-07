@@ -10,6 +10,8 @@ var obstaculo, obstaculo1, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obsta
 
 var pontos;
 
+var gameOverImg, restartImg;
+
 function preload(){
   trex_correndo = loadAnimation("trex1.png", "trex3.png", "trex4.png");
   
@@ -23,6 +25,9 @@ function preload(){
   obstaculo4 = loadImage("obstacle4.png");
   obstaculo5 = loadImage("obstacle5.png");
   obstaculo6 = loadImage("obstacle6.png");
+
+  gameOverImg = loadImage("gameOver.png");
+  restartImg = loadImage("restart.png");
 }
 
 function setup(){
@@ -72,8 +77,8 @@ function draw(){
   else if( estadoDeJogo === FIM){
     chao.velocityX = 0;
 
-    obstaculo_grupo.setVolocityEach(0);
-    nuvem_grupo.setVolocityEach(0);
+    obstaculo_grupo.setVelocityXEach(0);
+    nuvem_grupo.setVelocityXEach(0);
   }
   
   trex.collide(chao_invisivel);
